@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'users.apps.UsersConfig',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,10 +74,17 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Neon Tech Connection:
+# "Host=ep-bitter-bush-a2veg6do-pooler.eu-central-1.aws.neon.tech;Database=gidxn-db;Username=gidxn-db_owner;Password=npg_Z1uf6sBOaRwK"
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gidxn-db',
+        'USER': 'gidxn-db_owner',
+        'PASSWORD': 'npg_Z1uf6sBOaRwK',
+        'HOST': 'ep-bitter-bush-a2veg6do-pooler.eu-central-1.aws.neon.tech',
+        'PORT': '5432',
     }
 }
 
@@ -115,6 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
